@@ -8,7 +8,7 @@ exports.router = router;
 router.get("/", function (req, res) {
     // Req Session
     if (req.session && req.session.loggedIn) {
-        res.send("\n    <div>\n    <a href=\"/protected\"> Protected Route </a>\n      <h1>You are logged in</h1>\n      <a href=\"/logout\">Logout</a>\n    </div>\n    \n    ");
+        res.send("\n    <div>\n      <a href=\"/protected\"> Protected Route </a>\n      <h1>You are logged in</h1>\n      <a href=\"/logout\">Logout</a>\n    </div>\n    \n    ");
     }
     else {
         res.send("\n    <div>\n      <h1>You are not logged in</h1>\n      <a href=\"/login\">Login</a>\n    </div>\n  ");
@@ -35,5 +35,5 @@ router.get("/logout", function (req, res) {
     res.redirect("/");
 });
 router.get("/protected", middlewares_1.requireAuth, function (req, res) {
-    res.send("\n  <div>\n    <h1> Welcome to protected route, Admin!</h1>\n  </div>\n  ");
+    res.send("\n  <div>\n    <h1> Welcome to protected route, Admin!</h1>\n    <a href=\"/logout\">Logout</a>\n  </div>\n  ");
 });

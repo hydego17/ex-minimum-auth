@@ -13,7 +13,7 @@ router.get("/", (req: Request, res: Response) => {
   if (req.session && req.session.loggedIn) {
     res.send(`
     <div>
-    <a href="/protected"> Protected Route </a>
+      <a href="/protected"> Protected Route </a>
       <h1>You are logged in</h1>
       <a href="/logout">Logout</a>
     </div>
@@ -70,6 +70,7 @@ router.get("/protected", requireAuth, (req: Request, res: Response) => {
   res.send(`
   <div>
     <h1> Welcome to protected route, Admin!</h1>
+    <a href="/logout">Logout</a>
   </div>
   `);
 });
